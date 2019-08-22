@@ -1,0 +1,11 @@
+{
+  "name": "MsInventario",
+  "version": "1.0.0",
+  "dependencies": {
+    "express": "latest",
+    "body-parser": "latest"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
