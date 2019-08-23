@@ -2,8 +2,9 @@
   "name": "MsInventario",
   "version": "1.0.0",
   "dependencies": {
+    "body-parser": "latest",
     "express": "latest",
-    "body-parser": "latest"
+    "firebase-admin": "^8.4.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
