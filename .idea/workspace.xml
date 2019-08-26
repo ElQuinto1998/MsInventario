@@ -2,23 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d36adbf-56b0-4252-aa04-7f9b0e75ef5e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/controller/medicamento/MedicamentoController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/database/firebase/db.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/medicamento/Medicamento.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/medicamento/registroMedicamento/RegistroMedicamento.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/proveedor/Proveedor.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/usuario/Usuario.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/routes/registroMedicamento/RegistroMedicamentoRoutes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/routes/usuario/UsuarioRoutes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/database/firebase/DatabaseConfiguration.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/database/firebase/credential.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/medicamento/MedicamentoController.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/mongo/Mongo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/registroMedicamento/RegistroMedicamentoController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/cliente/Cliente.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/usuario/usuarioController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/medicamento/Medicamento.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/medicamento/medicamentoRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/medicamento/medicamentoRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/medicamento/MedicamentoController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/medicamento/MedicamentoController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/registroMedicamento/RegistroMedicamentoController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/registroMedicamento/RegistroMedicamentoController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/usuario/usuarioController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/usuario/UsuarioController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/firebase/db.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/firebase/prueba-c0a90-firebase-adminsdk-q50xt-1f58694b13.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/medicamento/Medicamento.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/medicamento/Medicamento.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/medicamento/registroMedicamento/RegistroMedicamento.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/registroMedicamento/RegistroMedicamento.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/medicamento/medicamentoRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/medicamento/MedicamentoRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/usuario/UsuarioRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/usuario/UsuarioRoutes.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -34,26 +32,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="18" column="85" lean-forward="true" selection-start-line="18" selection-start-column="85" selection-end-line="18" selection-end-column="85" />
+            <state relative-caret-position="250">
+              <caret line="18" column="68" selection-start-line="18" selection-start-column="68" selection-end-line="18" selection-end-column="68" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/usuario/usuarioController.js">
+        <entry file="file://$PROJECT_DIR$/src/routes/medicamento/MedicamentoRoutes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="81">
-              <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/routes/medicamento/medicamentoRoutes.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="81">
-              <caret line="3" column="90" lean-forward="true" selection-start-line="3" selection-start-column="90" selection-end-line="3" selection-end-column="90" />
+            <state relative-caret-position="216">
+              <caret line="8" column="89" selection-start-line="8" selection-start-column="89" selection-end-line="8" selection-end-column="89" />
             </state>
           </provider>
         </entry>
@@ -61,17 +50,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controller/medicamento/MedicamentoController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="14" column="56" selection-start-line="14" selection-start-column="56" selection-end-line="14" selection-end-column="56" />
+            <state relative-caret-position="551">
+              <caret line="39" column="13" lean-forward="true" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/routes/usuario/UsuarioRoutes.js">
+        <entry file="file://$PROJECT_DIR$/src/controller/usuario/UsuarioController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="9" column="24" lean-forward="true" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
+            <state relative-caret-position="378">
+              <caret line="23" column="66" lean-forward="true" selection-start-line="23" selection-start-column="66" selection-end-line="23" selection-end-column="66" />
             </state>
           </provider>
         </entry>
@@ -104,23 +93,30 @@
         <option value="$PROJECT_DIR$/model/proveedor/Proveedor.js" />
         <option value="$PROJECT_DIR$/model/medicamento/Medicamento.js" />
         <option value="$PROJECT_DIR$/model/medicamento/RegistroMedicamento.js" />
-        <option value="$PROJECT_DIR$/src/database/firebase/db.js" />
-        <option value="$PROJECT_DIR$/src/model/medicamento/Medicamento.js" />
         <option value="$PROJECT_DIR$/src/model/medicamento/registroMedicamento/RegistroMedicamento.js" />
-        <option value="$PROJECT_DIR$/src/controller/registroMedicamento/RegistroMedicamentoController.js" />
         <option value="$PROJECT_DIR$/src/routes/registroMedicamento/RegistroMedicamentoRoutes.js" />
         <option value="$PROJECT_DIR$/src/model/usuario/Usuario.js" />
-        <option value="$PROJECT_DIR$/server.js" />
-        <option value="$PROJECT_DIR$/src/routes/usuario/UsuarioRoutes.js" />
-        <option value="$PROJECT_DIR$/src/controller/usuario/usuarioController.js" />
+        <option value="$PROJECT_DIR$/src/database/firebase/prueba-c0a90-firebase-adminsdk-q50xt-1f58694b13.json" />
         <option value="$PROJECT_DIR$/src/routes/medicamento/medicamentoRoutes.js" />
+        <option value="$PROJECT_DIR$/src/controller/usuario/usuarioController.js" />
+        <option value="$PROJECT_DIR$/src/database/firebase/db.js" />
+        <option value="$USER_HOME$/Downloads/prueba-c0a90-firebase-adminsdk-q50xt-ec6b0e156c (1).json" />
+        <option value="$PROJECT_DIR$/src/database/firebase/credential.js" />
+        <option value="$PROJECT_DIR$/src/model/medicamento/Medicamento.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/src/controller/registroMedicamento/RegistroMedicamentoController.js" />
+        <option value="$PROJECT_DIR$/src/routes/usuario/UsuarioRoutes.js" />
+        <option value="$PROJECT_DIR$/server.js" />
+        <option value="$PROJECT_DIR$/src/routes/medicamento/MedicamentoRoutes.js" />
+        <option value="$PROJECT_DIR$/src/database/firebase/DatabaseConfiguration.js" />
+        <option value="$PROJECT_DIR$/src/controller/usuario/UsuarioController.js" />
         <option value="$PROJECT_DIR$/src/controller/medicamento/MedicamentoController.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="1550" />
+    <option name="y" value="116" />
     <option name="width" value="1382" />
     <option name="height" value="784" />
   </component>
@@ -151,7 +147,62 @@
               <item name="MsInventario" type="b2602c69:ProjectViewProjectNode" />
               <item name="MsInventario" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="medicamento" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MsInventario" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MsInventario" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="registroMedicamento" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MsInventario" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MsInventario" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="usuario" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MsInventario" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MsInventario" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MsInventario" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MsInventario" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="firebase" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MsInventario" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MsInventario" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MsInventario" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MsInventario" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="medicamento" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MsInventario" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MsInventario" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="registroMedicamento" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MsInventario" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MsInventario" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="usuario" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MsInventario" type="b2602c69:ProjectViewProjectNode" />
@@ -166,6 +217,13 @@
               <item name="routes" type="462c0819:PsiDirectoryNode" />
               <item name="medicamento" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="MsInventario" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MsInventario" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+              <item name="usuario" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -178,7 +236,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.15.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../angularfirebase-authentication-master" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -186,6 +244,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Quinto\ProyectoUnac\MicroServices\MsInventario\src\model" />
       <recent name="C:\Quinto\ProyectoUnac\MicroServices\MsInventario\src\model\medicamento\registroMedicamento" />
       <recent name="C:\Quinto\ProyectoUnac\MicroServices\MsInventario\src" />
       <recent name="C:\Quinto\ProyectoUnac\MicroServices\MsInventario\controller\medicamento" />
@@ -216,30 +275,31 @@
       <updated>1566429929671</updated>
       <workItem from="1566429930756" duration="675000" />
       <workItem from="1566431040127" duration="605000" />
-      <workItem from="1566444329247" duration="23240000" />
+      <workItem from="1566444329247" duration="37363000" />
+      <workItem from="1566739528219" duration="12644000" />
+      <workItem from="1566825185153" duration="7436000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24520000" />
+    <option name="totallyTimeSpent" value="58723000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
-    <editor active="true" />
+    <frame x="1358" y="-8" width="1936" height="1096" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2406577" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2402529" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32872504" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32872504" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32870865" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.2672" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.24299066" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -271,12 +331,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/cliente/Cliente.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/database/firebase/prueba-c0a90-firebase-adminsdk-q50xt-1f58694b13.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/model/cliente/Cliente.js" />
     <entry file="file://$PROJECT_DIR$/node_modules/firebase-admin/lib/utils/error.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="124">
@@ -298,47 +353,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/medicamento/Medicamento.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="35" lean-forward="true" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/database/firebase/db.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/medicamento/registroMedicamento/RegistroMedicamento.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="26" lean-forward="true" selection-start-column="26" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/registroMedicamento/RegistroMedicamentoController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="18" column="44" lean-forward="true" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/registroMedicamento/RegistroMedicamentoRoutes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="118">
           <caret line="7" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/database/firebase/prueba-c0a90-firebase-adminsdk-q50xt-1f58694b13.json" />
+    <entry file="file://$USER_HOME$/Downloads/prueba-c0a90-firebase-adminsdk-q50xt-ec6b0e156c.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="10" column="140" lean-forward="true" selection-start-line="1" selection-start-column="2" selection-end-line="10" selection-end-column="140" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/prueba-c0a90-firebase-adminsdk-q50xt-ec6b0e156c (1).json" />
+    <entry file="file://$USER_HOME$/Downloads/prueba-c0a90-export.json">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/usuario/Usuario.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -347,38 +379,83 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="18" column="85" lean-forward="true" selection-start-line="18" selection-start-column="85" selection-end-line="18" selection-end-column="85" />
+        <state relative-caret-position="96">
+          <caret line="4" column="31" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/registroMedicamento/RegistroMedicamento.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="26" lean-forward="true" selection-start-column="26" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/registroMedicamento/RegistroMedicamentoController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="819">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/usuario/UsuarioRoutes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="9" column="24" lean-forward="true" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
+        <state relative-caret-position="268">
+          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/usuario/usuarioController.js">
+    <entry file="file://$PROJECT_DIR$/src/database/firebase/credential.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+        <state relative-caret-position="324">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/medicamento/medicamentoRoutes.js">
+    <entry file="file://$PROJECT_DIR$/src/model/medicamento/Medicamento.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="3" column="90" lean-forward="true" selection-start-line="3" selection-start-column="90" selection-end-line="3" selection-end-column="90" />
+        <state relative-caret-position="27">
+          <caret line="1" column="41" selection-start-line="1" selection-start-column="41" selection-end-line="1" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/database/firebase/DatabaseConfiguration.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="12" column="8" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="18" column="68" selection-start-line="18" selection-start-column="68" selection-end-line="18" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/usuario/UsuarioController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="23" column="66" lean-forward="true" selection-start-line="23" selection-start-column="66" selection-end-line="23" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/medicamento/MedicamentoRoutes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="8" column="89" selection-start-line="8" selection-start-column="89" selection-end-line="8" selection-end-column="89" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/medicamento/MedicamentoController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="14" column="56" selection-start-line="14" selection-start-column="56" selection-end-line="14" selection-end-column="56" />
+        <state relative-caret-position="551">
+          <caret line="39" column="13" lean-forward="true" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
         </state>
       </provider>
     </entry>

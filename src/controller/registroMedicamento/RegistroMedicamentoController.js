@@ -1,5 +1,6 @@
-let RegistroMedicamento = require('../../model/medicamento/registroMedicamento/RegistroMedicamento');
-let {database} = require('../../database/firebase/db');
+let RegistroMedicamento = require('../../model/registroMedicamento/RegistroMedicamento');
+let {database} = require('../../database/firebase/DatabaseConfiguration');
+let sesionControl = require('../usuario/UsuarioController');
 
 /*let registroM1 = new RegistroMedicamento("ABC-123", new Date(), medicamento1, "Ingreso", 6, "cajas");
 let registroM2 = new RegistroMedicamento("GFF-753", new Date(), medicamento2, "Salida", 23, "cajas");
@@ -9,11 +10,12 @@ let registrosM = [registroM1, registroM2, registroM3];*/
 
 module.exports = {
 
-    getRegistrosMedicamentos: (req, res) => {
+    getRegistrosMedicamentos: async (req, res) => {
+
 
         let registrosMedicamentos;
 
-        database.ref("registrosMedicamentos").on('value', (snapshot) => {
+        await database.ref("registrosMedicamentos").on('value', (snapshot) => {
             registrosMedicamentos = snapshot.val();
             console.log(registrosMedicamentos);
             res.json(registrosMedicamentos);
@@ -21,19 +23,19 @@ module.exports = {
 
     },
 
-    getRegistrosByMedicamentoCode: (req, res) => {
+    getRegistrosByMedicamentoCode: async (req, res) => {
 
         let medicamentoCode = req.params.medicamentoCode;
-        res.send(medicamentoCode);
+        await res.send(medicamentoCode);
 
     },
 
-    guardarRegistroMedicamento: (req, res) => {
+    guardarRegistroMedicamento: async (req, res) => {
 
         console.log(req.body);
 
         let registroMedicamento = new RegistroMedicamento(req.body.codigoTransaccion, req.body.fecha, req.body.medicamento, req.body.tipo, req.body.cantidad, req.body.unidad);
-        database.ref("registrosMedicamentos").push(registroMedicamento);
+        await database.ref("registrosMedicamentos").push(registroMedicamento);
 
         res.send("Regstro del medicamento guardado con exito");
 

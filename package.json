@@ -1,10 +1,15 @@
 {
   "name": "MsInventario",
   "version": "1.0.0",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
   "dependencies": {
     "body-parser": "latest",
     "express": "latest",
-    "firebase-admin": "^8.4.0"
+    "firebase": "^6.4.1",
+    "firebase-admin": "^8.4.0",
+    "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
