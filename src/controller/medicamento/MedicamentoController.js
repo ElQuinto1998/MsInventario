@@ -19,7 +19,7 @@ module.exports = {
         //console.log(currentUser);
 
         if (currentUser && currentUser.rol !== "admin"){
-            res.status(401).send("No esta autorizado, debe ser un administrador");
+            res.sendStatus(401).send("No esta autorizado, debe ser un administrador");
             return;
         }
 
@@ -33,28 +33,32 @@ module.exports = {
     getMedicamentoByCode: async (req, res) => {
 
         let codigo = req.params.codigo;
+        let respuesta = null;
 
-        /*await database.ref("medicamentos"). on('value', (data) => {
-            medicamentos = data.val();
-            res.json(medicamentos);
-        });*/
+        await database.ref('medicamentos').orderByChild('codigo').equalTo(codigo).once('value', (data) => {
 
-        res.send(codigo);
+            let medicamento = data.val();
+            if(medicamento === null){
+                respuesta = "No se encontró el medicamento";
+            }else {
+                respuesta = medicamento;
+            }
+            res.send(respuesta);
+
+        }).catch(error => {
+            res.sendStatus(500).send("Error, Por favor intente mas tarde");
+        });
 
     },
 
     guardarMedicamento: async (req, res) => {
 
-        //console.log(req.body);
-
         currentUser = req.body.currentUser;
 
         if (currentUser && currentUser.rol !== "admin"){
-            res.status(401).send("No esta autorizado, debe ser administrador");
+            res.sendStatus(401).send("No esta autorizado, debe ser administrador");
             return;
         }
-
-        //await database.ref("medicamentos/"+codigo).
 
         let medicamento = new Medicamento(req.body.codigo, req.body.nombre, req.body.precioCompra, req.body.precioVenta, req.body.existencias, req.body.unidad, req.body.imagen, req.body.proveedor);
         await database.ref("medicamentos").child(medicamento.codigo).set({
@@ -69,7 +73,7 @@ module.exports = {
         }).then(value => {
             res.send("Medicamento guardado exitosamente");
         }).catch(error => {
-            res.send(500).send("No se pudo crear el medicamento");
+            res.sendStatus(500).send("No se pudo crear el medicamento");
         });
 
     },
@@ -77,16 +81,13 @@ module.exports = {
     actualizarMedicamento: async (req, res) => {
 
         let medicToUpdate = req.body;
-
         currentUser = req.body.currentUser;
 
         if (currentUser && currentUser.rol !== "admin"){
-            res.status(401).send("No esta autorizado, debe ser administrador");
+            res.sendStatus(401).send("No esta autorizado, debe ser administrador");
             return;
         }
-
-        console.log(medicToUpdate);
-
+        //console.log(medicToUpdate);
         await database.ref().child('/medicamentos/' + medicToUpdate.codigo)
             .update({ nombre: medicToUpdate.nombre,
                 precioCompra: medicToUpdate.precioCompra,
@@ -98,33 +99,23 @@ module.exports = {
             }).then(value => {
                 res.send("Medicamento actualizado exitosamente")
             }).catch(error => {
-                res.send(500).send("No se pudo actualizar el medicamento");
+                res.sendStatus(500).send("No se pudo actualizar el medicamento");
             });
-
     },
 
     eliminarMedicamento: async (req, res) => {
 
         currentUser = req.body.currentUser;
         let codigo = req.params.codigo;
-
         if (currentUser && currentUser.rol !== "admin"){
-            res.status(401).send("No esta autorizado, debe ser administrador");
+            res.sendStatus(401).send("No esta autorizado, debe ser administrador");
             return;
         }
-
         await database.ref("medicamentos/"+codigo).remove(a => {
             res.send("Medicamento eliminado exitosamente")
         }).catch(error => {
-            res.send(500).send("No se pudo eliminar el medicamento");
+            res.sendStatus(500).send("No se pudo eliminar el medicamento");
         });
 
     },
-
-    validarRol: (rol) => {
-        /*if(rol !== "admin"){
-            res.status(401).send("No esta autorizado, debe ser un administrador");
-        };*/
-    }
-
 };
