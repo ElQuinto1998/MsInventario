@@ -1,10 +1,5 @@
 let Medicamento = require('../../model/medicamento/Medicamento');
 let {database} = require('../../database/firebase/DatabaseConfiguration');
-let sesionControl = require('../usuario/UsuarioController');
-
-/*let medicamento1 = new Medicamento("213", "Injection", 34, 40, 60, "cajas", "urlImagen", "Vicar farmacéutica");
-let medicamento2 = new Medicamento("643", "Ampoya", 20, 22, 38, "cajas", "urlImagen", "Aspen colombia");
-let medicamento3 = new Medicamento("134", "Ibuprofeno", 56, 60, 25, "cajas", "urlImagen", "GMEDICAL S.A.S");*/
 
 let currentUser = {};
 
@@ -34,6 +29,12 @@ module.exports = {
 
         let codigo = req.params.codigo;
         let respuesta = null;
+        currentUser = req.body.currentUser;
+
+        if (currentUser && currentUser.rol !== "admin"){
+            res.sendStatus(401).send("No esta autorizado, debe ser administrador");
+            return;
+        }
 
         await database.ref('medicamentos').orderByChild('codigo').equalTo(codigo).once('value', (data) => {
 
@@ -60,7 +61,7 @@ module.exports = {
             return;
         }
 
-        let medicamento = new Medicamento(req.body.codigo, req.body.nombre, req.body.precioCompra, req.body.precioVenta, req.body.existencias, req.body.unidad, req.body.imagen, req.body.proveedor);
+        let medicamento = new Medicamento(req.body.codigo, req.body.nombre, req.body.precioCompra, req.body.precioVenta, req.body.existencias, req.body.unidad, req.body.imagen, req.body.proveedor, req.categoria);
         await database.ref("medicamentos").child(medicamento.codigo).set({
             codigo: medicamento.codigo,
             nombre: medicamento.nombre,
@@ -69,7 +70,8 @@ module.exports = {
             existencias: medicamento.existencias,
             unidad: medicamento.unidad,
             imagen: medicamento.imagen,
-            proveedor: medicamento.proveedor
+            proveedor: medicamento.proveedor,
+            categotia: medicamento.categoria
         }).then(value => {
             res.send("Medicamento guardado exitosamente");
         }).catch(error => {

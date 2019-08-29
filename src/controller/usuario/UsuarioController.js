@@ -1,5 +1,4 @@
-let { firebase, database, db } = require('../../database/firebase/DatabaseConfiguration');
-let usuario = require('../../model/usuario/Usuario');
+let { firebase, dbCloud } = require('../../database/firebase/DatabaseConfiguration');
 
 module.exports = {
 
@@ -10,7 +9,7 @@ module.exports = {
         try {
             const decodedToken = await firebase.auth().verifyIdToken(idToken.substring(7, idToken.length));
             if (decodedToken) {
-                await db.collection("users").where("uid", "==", decodedToken.uid).get()
+                await dbCloud.collection("users").where("uid", "==", decodedToken.uid).get()
                     .then(cuerrentUser => {
                         if(cuerrentUser.empty){
                             console.log("Usuario no encontrado");
@@ -24,9 +23,13 @@ module.exports = {
                 return res.status(401).send("No esta autorizado");
             }
         } catch (e) {
-            return res.status(401).send("No esta autorizado");
+            return res.status(401).send("No esta autorizado"+ e);
         }
 
+    },
+
+    getInformacion: async (req, res) => {
+        await res.send(req.body.currentUser);
     }
 
 };

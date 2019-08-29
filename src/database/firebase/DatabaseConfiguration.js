@@ -12,4 +12,4 @@ admin.initializeApp({
 let databaseConfiguration = admin.database();
 const db = admin.firestore();
 
-module.exports = {database: databaseConfiguration, firebase: admin, db: db};
+module.exports = {database: databaseConfiguration, firebase: admin, dbCloud: db};
