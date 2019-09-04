@@ -12,7 +12,7 @@ module.exports = {
         currentUser = req.body.currentUser;
 
         if (currentUser && (currentUser.rol.id !== 1 || currentUser.rol.id !== 2)){
-            res.sendStatus(401).send("No esta autorizado, debe ser administrador o farmacéutico");
+            res.status(401).send("No esta autorizado, debe ser administrador o farmacéutico");
             return;
         }
 

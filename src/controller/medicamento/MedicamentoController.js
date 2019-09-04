@@ -11,10 +11,10 @@ module.exports = {
         let medicamentos = {};
         currentUser = req.body.currentUser;
 
-        //console.log(currentUser);
+        console.log(currentUser);
 
-        if (currentUser && currentUser.rol !== "admin"){
-            res.sendStatus(401).send("No esta autorizado, debe ser un administrador");
+        if (currentUser && currentUser.rol.id !== "1"){
+            res.status(401).send("No esta autorizado, debe ser un administrador");
             return;
         }
 
@@ -32,7 +32,7 @@ module.exports = {
         currentUser = req.body.currentUser;
 
         if (currentUser && currentUser.rol !== "admin"){
-            res.sendStatus(401).send("No esta autorizado, debe ser administrador");
+            res.status(401).send("No esta autorizado, debe ser administrador");
             return;
         }
 
@@ -47,7 +47,7 @@ module.exports = {
             res.send(respuesta);
 
         }).catch(error => {
-            res.sendStatus(500).send("Error, Por favor intente mas tarde");
+            res.status(500).send("Error, Por favor intente mas tarde");
         });
 
     },
@@ -57,7 +57,7 @@ module.exports = {
         currentUser = req.body.currentUser;
 
         if (currentUser && currentUser.rol !== "admin"){
-            res.sendStatus(401).send("No esta autorizado, debe ser administrador");
+            res.status(401).send("No esta autorizado, debe ser administrador");
             return;
         }
 
@@ -75,7 +75,7 @@ module.exports = {
         }).then(value => {
             res.send("Medicamento guardado exitosamente");
         }).catch(error => {
-            res.sendStatus(500).send("No se pudo crear el medicamento");
+            res.status(500).send("No se pudo crear el medicamento");
         });
 
     },
@@ -86,7 +86,7 @@ module.exports = {
         currentUser = req.body.currentUser;
 
         if (currentUser && currentUser.rol !== "admin"){
-            res.sendStatus(401).send("No esta autorizado, debe ser administrador");
+            res.status(401).send("No esta autorizado, debe ser administrador");
             return;
         }
         //console.log(medicToUpdate);
@@ -101,7 +101,7 @@ module.exports = {
             }).then(value => {
                 res.send("Medicamento actualizado exitosamente")
             }).catch(error => {
-                res.sendStatus(500).send("No se pudo actualizar el medicamento");
+                res.status(500).send("No se pudo actualizar el medicamento");
             });
     },
 
@@ -110,13 +110,13 @@ module.exports = {
         currentUser = req.body.currentUser;
         let codigo = req.params.codigo;
         if (currentUser && currentUser.rol !== "admin"){
-            res.sendStatus(401).send("No esta autorizado, debe ser administrador");
+            res.status(401).send("No esta autorizado, debe ser administrador");
             return;
         }
         await database.ref("medicamentos/"+codigo).remove(a => {
             res.send("Medicamento eliminado exitosamente")
         }).catch(error => {
-            res.sendStatus(500).send("No se pudo eliminar el medicamento");
+            res.status(500).send("No se pudo eliminar el medicamento");
         });
 
     },

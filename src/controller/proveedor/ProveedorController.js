@@ -28,7 +28,7 @@ module.exports = {
         }).then(value => {
             res.send("Proveedor guardado exitosamente");
         }).catch(error => {
-            res.sendStatus(500).send("No se pudo crear el proveedor");
+            res.status(500).send("No se pudo crear el proveedor");
         });
     },
 
@@ -46,7 +46,7 @@ module.exports = {
             }).then(value => {
                 res.send("Proveedor actualizado exitosamente")
             }).catch(error => {
-                res.sendStatus(500).send("No se pudo actualizar el proveedor");
+                res.status(500).send("No se pudo actualizar el proveedor");
             });
 
     },
@@ -58,7 +58,7 @@ module.exports = {
         await database.ref("proveedores/"+idproveedor).remove(a => {
             res.send("Proveedor eliminado exitosamente")
         }).catch(error => {
-            res.sendStatus(500).send("No se pudo eliminar el proveedor");
+            res.status(500).send("No se pudo eliminar el proveedor");
         });
 
     }

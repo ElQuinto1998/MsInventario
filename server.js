@@ -25,7 +25,7 @@ app.use((req, res, next) => {
 
 
 //Using routes
-app.use('/inventario', routesMedicamento, routesRegistroMedicamentos, routesUsuario, routerProveedor);
+app.use('/api_inventario', routesMedicamento, routesRegistroMedicamentos, routesUsuario, routerProveedor);
 
 //Running server
 app.listen(8000,() => {
