@@ -31,7 +31,7 @@ module.exports = {
         let respuesta = null;
         currentUser = req.body.currentUser;
 
-        if (currentUser && currentUser.rol !== "admin"){
+        if (currentUser && currentUser.rol.id !== "1"){
             res.status(401).send("No esta autorizado, debe ser administrador");
             return;
         }
@@ -56,7 +56,7 @@ module.exports = {
 
         currentUser = req.body.currentUser;
 
-        if (currentUser && currentUser.rol !== "admin"){
+        if (currentUser && currentUser.rol.id !== "1"){
             res.status(401).send("No esta autorizado, debe ser administrador");
             return;
         }
@@ -85,7 +85,7 @@ module.exports = {
         let medicToUpdate = req.body;
         currentUser = req.body.currentUser;
 
-        if (currentUser && currentUser.rol !== "admin"){
+        if (currentUser && currentUser.rol.id !== "1"){
             res.status(401).send("No esta autorizado, debe ser administrador");
             return;
         }
@@ -109,7 +109,7 @@ module.exports = {
 
         currentUser = req.body.currentUser;
         let codigo = req.params.codigo;
-        if (currentUser && currentUser.rol !== "admin"){
+        if (currentUser && currentUser.rol.id !== "1"){
             res.status(401).send("No esta autorizado, debe ser administrador");
             return;
         }

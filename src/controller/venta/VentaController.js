@@ -8,10 +8,9 @@ module.exports = {
 
     getVentas: async (req, res) => {
 
-
         currentUser = req.body.currentUser;
 
-        if (currentUser && (currentUser.rol.id !== 1 || currentUser.rol.id !== 2)){
+        if (currentUser && (currentUser.rol.id !== "1" || currentUser.rol.id !== "2")){
             res.status(401).send("No esta autorizado, debe ser administrador o farmacéutico");
             return;
         }

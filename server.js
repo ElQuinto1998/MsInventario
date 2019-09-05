@@ -22,8 +22,6 @@ app.use((req, res, next) => {
     next();
 });
 
-
-
 //Using routes
 app.use('/api_inventario', routesMedicamento, routesRegistroMedicamentos, routesUsuario, routerProveedor);
 
