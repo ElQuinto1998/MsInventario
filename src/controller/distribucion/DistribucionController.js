@@ -6,9 +6,9 @@ let currentUser = {};
 module.exports = {
 
 
-    getMedicamentos: async (req, res) => {
+    getPuntosDistribucion: async (req, res) => {
 
-        let medicamentos = {};
+        let distribucionList = {};
         currentUser = req.body.currentUser;
 
         if (currentUser && currentUser.rol.id !== "1"){
@@ -16,24 +16,24 @@ module.exports = {
             return;
         }
 
-        await database.ref("medicamentos").on('value', (data) => {
-            medicamentos = data.val();
-            if(medicamentos === null){
+        await database.ref("puntosDistribucion").on('value', (data) => {
+            distribucionList = data.val();
+            if(distribucionList === null){
                 res.status(500).send("No hay medicamentos registrados");
             }else {
-                console.log(medicamentos);
-                return medicamentos;
+                console.log(distribucionList);
+                return distribucionList;
             }
 
         });
 
     },
 
-    getMedicamentoByCode: async (req, res) => {
+    getPuntosDistribucionPorCodigo: async (req, res) => {
 
         let codigo = req.params.codigo;
-        let respuesta = null;
         currentUser = req.body.currentUser;
+        let respuesta = null;
 
         if (currentUser && currentUser.rol.id !== "1"){
             res.status(401).send("No esta autorizado, debe ser administrador");
