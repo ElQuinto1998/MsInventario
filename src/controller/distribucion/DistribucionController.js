@@ -19,7 +19,7 @@ module.exports = {
         await database.ref("puntosDistribucion").on('value', (data) => {
             distribucionList = data.val();
             if(distribucionList === null){
-                res.status(500).send("No hay medicamentos registrados");
+                res.status(500).send("No hay puntos de distribucion registrados");
             }else {
                 console.log(distribucionList);
                 return distribucionList;
@@ -40,13 +40,14 @@ module.exports = {
             return;
         }
 
-        await database.ref('medicamentos').orderByChild('codigo').equalTo(codigo).once('value', (data) => {
+        await database.ref('puntosDistribucion').
+            orderByChild('codigo').equalTo(codigo).once('value', (data) => {
 
-            let medicamento = data.val();
-            if(medicamento === null){
+            let puntoDistribucion = data.val();
+            if(puntoDistribucion === null){
                 respuesta = "No se encontró el medicamento";
             }else {
-                respuesta = medicamento;
+                respuesta = puntoDistribucion;
             }
             res.send(respuesta);
 
