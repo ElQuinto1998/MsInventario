@@ -11,8 +11,6 @@ module.exports = {
         let medicamentos = {};
         currentUser = req.body.currentUser;
 
-        console.log(currentUser);
-
         if (currentUser && currentUser.rol.id !== "1"){
             res.status(401).send("No esta autorizado, debe ser un administrador");
             return;
@@ -20,7 +18,13 @@ module.exports = {
 
         await database.ref("medicamentos").on('value', (data) => {
             medicamentos = data.val();
-            res.json(medicamentos);
+            if(medicamentos === null){
+                res.status(500).send("No hay medicamentos registrados");
+            }else {
+                console.log(medicamentos);
+                return medicamentos;
+            }
+
         });
 
     },
@@ -61,7 +65,7 @@ module.exports = {
             return;
         }
 
-        let medicamento = new Medicamento(req.body.codigo, req.body.nombre, req.body.precioCompra, req.body.precioVenta, req.body.existencias, req.body.unidad, req.body.imagen, req.body.proveedor, req.categoria);
+        let medicamento = new Medicamento(req.body.codigo, req.body.nombre, req.body.precioCompra, req.body.precioVenta, req.body.existencias, req.body.unidad, req.body.imagen, req.body.proveedor, req.body.categoria);
         await database.ref("medicamentos").child(medicamento.codigo).set({
             codigo: medicamento.codigo,
             nombre: medicamento.nombre,
@@ -71,7 +75,7 @@ module.exports = {
             unidad: medicamento.unidad,
             imagen: medicamento.imagen,
             proveedor: medicamento.proveedor,
-            categotia: medicamento.categoria
+            categoria: medicamento.categoria
         }).then(value => {
             res.send("Medicamento guardado exitosamente");
         }).catch(error => {
@@ -99,7 +103,7 @@ module.exports = {
                 imagen: medicToUpdate.imagen,
                 proveedor: medicToUpdate.proveedor
             }).then(value => {
-                res.send("Medicamento actualizado exitosamente")
+                res.status(200).send("Medicamento actualizado exitosamente")
             }).catch(error => {
                 res.status(500).send("No se pudo actualizar el medicamento");
             });
@@ -114,10 +118,16 @@ module.exports = {
             return;
         }
         await database.ref("medicamentos/"+codigo).remove(a => {
-            res.send("Medicamento eliminado exitosamente")
+            res.status(200).send("Medicamento eliminado exitosamente")
         }).catch(error => {
             res.status(500).send("No se pudo eliminar el medicamento");
         });
 
     },
+
+    saludar: async (req, res) => {
+
+        return "Hola";
+
+    }
 };

@@ -10,17 +10,21 @@ module.exports = {
 
         currentUser = req.body.currentUser;
 
-        if (currentUser && (currentUser.rol.id !== "1" || currentUser.rol.id !== "2")){
+        if (currentUser && (currentUser.rol.id !== "1" && currentUser.rol.id !== "2")){
             res.status(401).send("No esta autorizado, debe ser administrador o farmacéutico");
             return;
         }
 
-        let ventas;
+        let ventas = {};
 
         await database.ref("ventas").on('value', (snapshot) => {
             ventas = snapshot.val();
-            console.log(ventas);
-            res.json(ventas);
+            if(ventas === null){
+                res.status(500).send("No hay ventas registradas");
+            }else {
+                res.status(200).send(ventas);
+            }
+
         });
 
     },

@@ -29,3 +29,5 @@ app.use('/api_inventario', routesMedicamento, routesRegistroMedicamentos, routes
 app.listen(8000,() => {
     console.log("Corriendo en puerto 8000");
 });
+
+module.exports = app;

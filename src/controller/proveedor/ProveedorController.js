@@ -1,10 +1,6 @@
 let Proveedor = require('../../model/proveedor/Proveedor');
 let {database} = require('../../database/firebase/DatabaseConfiguration');
 
-/*let proveedor1 = new Proveedor("16543", "DrogasW", "235436", "proveedor1@gmail.com", "Cr 24");
-let proveedor2 = new Proveedor("6445", "MedicosJ", "78566", "proveedor2@gmail.com", "Cr 75");
-let proveedor3 = new Proveedor("2455", "Farma54", "8654", "proveedor3@gmail.com", "Cr 12");*/
-
 let proveedores = {};
 
 module.exports = {
