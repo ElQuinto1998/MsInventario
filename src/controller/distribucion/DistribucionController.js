@@ -8,7 +8,7 @@ module.exports = {
 
     getPuntosDistribucion: async (req, res) => {
 
-        let distribucionList = {};
+        let distribucionList = [];
         currentUser = req.body.currentUser;
 
         if (currentUser && currentUser.rol.id !== "1") {
@@ -17,12 +17,16 @@ module.exports = {
         }
 
         await database.ref("puntosDistribucion").on('value', (data) => {
-            distribucionList = data;
-            if (distribucionList === null) {
+
+            if (data.val() === null) {
                 res.status(500).send("No hay puntos de distribucion registrados");
             } else {
-                console.log(distribucionList);
+                data.forEach((dato) => {
+                    let puntoDist = dato.val();
+                    distribucionList.push(puntoDist);
+                });
                 res.send(distribucionList);
+                res.end();
             }
 
         });
@@ -43,13 +47,15 @@ module.exports = {
         await database.ref('puntosDistribucion').
             orderByChild('codigo').equalTo(codigo).once('value', (data) => {
 
-                let puntoDistribucion = data.val();
-                if (puntoDistribucion === null) {
-                    respuesta = "No se encontró el medicamento";
+                if (data.val() === null) {
+                    respuesta = "No se encontró el punto de distribucion";
                 } else {
-                    respuesta = puntoDistribucion;
+                    data.forEach((data) => {
+                        respuesta = data.val();
+                    });
                 }
                 res.send(respuesta);
+                res.end();
 
             }).catch(error => {
                 res.status(500).send("Error, Por favor intente mas tarde");
@@ -73,6 +79,7 @@ module.exports = {
             localizacion : puntoDistribucion.localizacion
         }).then(value => {
             res.send("Punto de distribucion guardado exitosamente");
+            res.end();
         }).catch(error => {
             res.status(500).send("No se pudo crear el punto de distribucion");
         });
@@ -82,19 +89,20 @@ module.exports = {
     actualizarPuntoDistribucion: async (req, res) => {
 
         let puntoDistribucion = req.body;
-        /* currentUser = req.body.currentUser;
+         currentUser = req.body.currentUser;
 
         if (currentUser && currentUser.rol.id !== "1") {
             res.status(401).send("No esta autorizado, debe ser administrador");
             return;
-        } */
-        //console.log(medicToUpdate);
-        await database.ref().child('/distribucion/' + puntoDistribucion.codigo)
+        }
+
+        await database.ref().child('/puntosDistribucion/' + puntoDistribucion.codigo)
             .update({
                 nombre: puntoDistribucion.nombre,
-                localizacion: puntoDistribucion.precioCompra
+                localizacion: puntoDistribucion.localizacion
             }).then(value => {
-                res.status(200).send("Punto de distribucion actualizado exitosamente")
+                res.status(200).send("Punto de distribucion actualizado exitosamente");
+                res.end();
             }).catch(error => {
                 res.status(500).send("No se pudo actualizar el Punto de distribucion");
             });
@@ -108,17 +116,12 @@ module.exports = {
             res.status(401).send("No esta autorizado, debe ser administrador");
             return;
         }
-        await database.ref("distribucion/" + codigo).remove(a => {
-            res.status(200).send("Medicamento eliminado exitosamente")
+        await database.ref("puntosDistribucion/" + codigo).remove(a => {
+            res.status(200).send("punto de distribucion eliminado exitosamente");
+            res.end();
         }).catch(error => {
-            res.status(500).send("No se pudo eliminar el medicamento");
+            res.status(500).send("No se pudo eliminar el punto de distribucion");
         });
-
-    },
-
-    saludar: async (req, res) => {
-
-        return "Hola";
 
     }
 };

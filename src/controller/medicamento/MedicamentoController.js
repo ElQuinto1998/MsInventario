@@ -5,11 +5,10 @@ let currentUser = {};
 
 module.exports = {
 
-
     getMedicamentos: async (req, res) => {
 
-        let medicamentos = {};
         currentUser = req.body.currentUser;
+        let medicamentos = [];
 
         if (currentUser && currentUser.rol.id !== "1"){
             res.status(401).send("No esta autorizado, debe ser un administrador");
@@ -17,14 +16,17 @@ module.exports = {
         }
 
         await database.ref("medicamentos").on('value', (data) => {
-            medicamentos = data.val();
-            if(medicamentos === null){
+
+            if(data.val() === null){
                 res.status(500).send("No hay medicamentos registrados");
             }else {
-                console.log(medicamentos);
-                return medicamentos;
+                data.forEach((dato) => {
+                    let medicamento = dato.val();
+                    medicamentos.push(medicamento);
+                });
+                res.send(medicamentos);
+                res.end();
             }
-
         });
 
     },
@@ -42,16 +44,19 @@ module.exports = {
 
         await database.ref('medicamentos').orderByChild('codigo').equalTo(codigo).once('value', (data) => {
 
-            let medicamento = data.val();
-            if(medicamento === null){
+            if(data.val() === null){
                 respuesta = "No se encontró el medicamento";
             }else {
-                respuesta = medicamento;
+                data.forEach((data) => {
+                   respuesta = data.val();
+                });
             }
             res.send(respuesta);
+            res.end();
 
         }).catch(error => {
             res.status(500).send("Error, Por favor intente mas tarde");
+            res.end();
         });
 
     },
@@ -65,7 +70,9 @@ module.exports = {
             return;
         }
 
-        let medicamento = new Medicamento(req.body.codigo, req.body.nombre, req.body.precioCompra, req.body.precioVenta, req.body.existencias, req.body.unidad, req.body.imagen, req.body.proveedor, req.body.categoria);
+        let medicamento = new Medicamento(req.body.codigo, req.body.nombre, req.body.precioCompra,
+            req.body.precioVenta, req.body.existencias,
+            req.body.unidad, req.body.imagen, req.body.proveedor, req.body.categoria, req.body.puntoDistribucion);
         await database.ref("medicamentos").child(medicamento.codigo).set({
             codigo: medicamento.codigo,
             nombre: medicamento.nombre,
@@ -75,11 +82,14 @@ module.exports = {
             unidad: medicamento.unidad,
             imagen: medicamento.imagen,
             proveedor: medicamento.proveedor,
-            categoria: medicamento.categoria
+            categoria: medicamento.categoria,
+            puntoDistribucion: medicamento.puntoDistribucion
         }).then(value => {
             res.send("Medicamento guardado exitosamente");
+            res.end();
         }).catch(error => {
             res.status(500).send("No se pudo crear el medicamento");
+            res.end();
         });
 
     },
@@ -101,11 +111,15 @@ module.exports = {
                 existencias: medicToUpdate.existencias,
                 unidad: medicToUpdate.unidad,
                 imagen: medicToUpdate.imagen,
-                proveedor: medicToUpdate.proveedor
+                proveedor: medicToUpdate.proveedor,
+                categoria: medicToUpdate.categoria,
+                puntoDistribucion: medicToUpdate.puntoDistribucion
             }).then(value => {
                 res.status(200).send("Medicamento actualizado exitosamente")
+                res.end();
             }).catch(error => {
                 res.status(500).send("No se pudo actualizar el medicamento");
+                res.end();
             });
     },
 
@@ -118,16 +132,13 @@ module.exports = {
             return;
         }
         await database.ref("medicamentos/"+codigo).remove(a => {
-            res.status(200).send("Medicamento eliminado exitosamente")
+            res.status(200).send("Medicamento eliminado exitosamente");
+            res.end();
         }).catch(error => {
             res.status(500).send("No se pudo eliminar el medicamento");
+            res.end();
         });
 
     },
 
-    saludar: async (req, res) => {
-
-        return "Hola";
-
-    }
 };

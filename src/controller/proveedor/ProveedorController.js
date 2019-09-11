@@ -1,14 +1,23 @@
 let Proveedor = require('../../model/proveedor/Proveedor');
 let {database} = require('../../database/firebase/DatabaseConfiguration');
 
-let proveedores = {};
-
 module.exports = {
 
     getProveedores: async (req, res) => {
+
+        let proveedores = [];
+
         await database.ref("proveedores").on('value', (data) => {
-            proveedores = data.val();
-            res.json(proveedores);
+            if(data.val() === null){
+                res.status(500).send("No hay proveedores registrados");
+            }else{
+                data.forEach((dato) => {
+                    let proveedor = dato.val();
+                    proveedores.push(proveedor);
+                });
+                res.send(proveedores);
+                res.end();
+            }
         });
     },
 
@@ -23,8 +32,10 @@ module.exports = {
             direccion: proveedor.direccion
         }).then(value => {
             res.send("Proveedor guardado exitosamente");
+            res.end();
         }).catch(error => {
             res.status(500).send("No se pudo crear el proveedor");
+            res.end();
         });
     },
 
@@ -34,13 +45,13 @@ module.exports = {
 
         await database.ref().child('/proveedores/' + proveedorToUpdate.idProveedor)
             .update({
-                idProveedor: proveedorToUpdate.idProveedor,
                 nombre: proveedorToUpdate.nombre,
                 telefono: proveedorToUpdate.telefono,
                 correo: proveedorToUpdate.correo,
                 direccion: proveedorToUpdate.direccion
             }).then(value => {
                 res.send("Proveedor actualizado exitosamente")
+                res.end();
             }).catch(error => {
                 res.status(500).send("No se pudo actualizar el proveedor");
             });
@@ -52,7 +63,8 @@ module.exports = {
         let idproveedor = req.params.idProveedor;
 
         await database.ref("proveedores/"+idproveedor).remove(a => {
-            res.send("Proveedor eliminado exitosamente")
+            res.send("Proveedor eliminado exitosamente");
+            res.end();
         }).catch(error => {
             res.status(500).send("No se pudo eliminar el proveedor");
         });
