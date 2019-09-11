@@ -59,12 +59,12 @@ module.exports = {
 
     guardarPuntosDistribucion: async (req, res) => {
 
-        /* currentUser = req.body.currentUser;
+        currentUser = req.body.currentUser;
 
         if (currentUser && currentUser.rol.id !== "1") {
             res.status(401).send("No esta autorizado, debe ser administrador");
             return;
-        } */
+        } 
 
         let puntoDistribucion = new Distribucion(req.body.codigo, req.body.nombre, req.body.localizacion);
         await database.ref("puntosDistribucion").child(puntoDistribucion.codigo).set({
