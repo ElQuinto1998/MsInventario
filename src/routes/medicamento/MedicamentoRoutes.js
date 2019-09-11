@@ -2,7 +2,7 @@
 
 let express = require('express');
 let medicamentoController = require('../../controller/medicamento/MedicamentoController');
-let sesionControl = require('../../controller/usuario/usuarioController');
+let sesionControl = require('../../controller/usuario/UsuarioController');
 
 let router = express.Router();
 
