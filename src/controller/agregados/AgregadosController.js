@@ -15,7 +15,6 @@ module.exports = {
                     categorias.push(categoria);
                 });
                 res.send(categorias);
-                res.end();
             }
 
         });

@@ -26,7 +26,6 @@ module.exports = {
                     distribucionList.push(puntoDist);
                 });
                 res.send(distribucionList);
-                res.end();
             }
 
         });
@@ -55,7 +54,6 @@ module.exports = {
                     });
                 }
                 res.send(respuesta);
-                res.end();
 
             }).catch(error => {
                 res.status(500).send("Error, Por favor intente mas tarde");
@@ -79,7 +77,6 @@ module.exports = {
             localizacion : puntoDistribucion.localizacion
         }).then(value => {
             res.send("Punto de distribucion guardado exitosamente");
-            res.end();
         }).catch(error => {
             res.status(500).send("No se pudo crear el punto de distribucion");
         });
@@ -102,7 +99,6 @@ module.exports = {
                 localizacion: puntoDistribucion.localizacion
             }).then(value => {
                 res.status(200).send("Punto de distribucion actualizado exitosamente");
-                res.end();
             }).catch(error => {
                 res.status(500).send("No se pudo actualizar el Punto de distribucion");
             });
@@ -118,7 +114,6 @@ module.exports = {
         }
         await database.ref("puntosDistribucion/" + codigo).remove(a => {
             res.status(200).send("punto de distribucion eliminado exitosamente");
-            res.end();
         }).catch(error => {
             res.status(500).send("No se pudo eliminar el punto de distribucion");
         });

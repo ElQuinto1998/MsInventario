@@ -16,7 +16,6 @@ module.exports = {
                     proveedores.push(proveedor);
                 });
                 res.send(proveedores);
-                res.end();
             }
         });
     },
@@ -32,10 +31,8 @@ module.exports = {
             direccion: proveedor.direccion
         }).then(value => {
             res.send("Proveedor guardado exitosamente");
-            res.end();
         }).catch(error => {
             res.status(500).send("No se pudo crear el proveedor");
-            res.end();
         });
     },
 
@@ -51,7 +48,6 @@ module.exports = {
                 direccion: proveedorToUpdate.direccion
             }).then(value => {
                 res.send("Proveedor actualizado exitosamente")
-                res.end();
             }).catch(error => {
                 res.status(500).send("No se pudo actualizar el proveedor");
             });
@@ -64,7 +60,6 @@ module.exports = {
 
         await database.ref("proveedores/"+idproveedor).remove(a => {
             res.send("Proveedor eliminado exitosamente");
-            res.end();
         }).catch(error => {
             res.status(500).send("No se pudo eliminar el proveedor");
         });
