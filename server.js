@@ -9,6 +9,7 @@ let routesRegistroMedicamentos = require('./src/routes/venta/VentaRouter');
 let routesUsuario = require('./src/routes/usuario/UsuarioRoutes');
 let routerProveedor = require('./src/routes/proveedor/ProveedorRoutes');
 let routerAgregados = require('./src/routes/agregados/AgregadosRouter');
+let routerDistribucion = require('./src/routes/distribucion/DistribucionRoutes');
 
 //Body-parser
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -24,7 +25,8 @@ app.use((req, res, next) => {
 });
 
 //Using routes
-app.use('/api_inventario', routesMedicamento, routesRegistroMedicamentos, routesUsuario, routerProveedor, routerAgregados);
+app.use('/api_inventario', routesMedicamento, routesRegistroMedicamentos, 
+        routesUsuario, routerProveedor, routerAgregados, routerDistribucion);
 
 //Running server
 app.listen(8000,() => {
