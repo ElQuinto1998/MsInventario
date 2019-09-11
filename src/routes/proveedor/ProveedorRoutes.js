@@ -4,7 +4,7 @@ let express = require('express');
 let router = express.Router();
 
 let proveedorController = require('../../controller/proveedor/ProveedorController');
-let sesionControl = require('../../controller/usuario/usuarioController');
+let sesionControl = require('../../controller/usuario/UsuarioController');
 
 router.get('/proveedores', /*sesionControl.verificarToken,*/ proveedorController.getProveedores);
 router.post('/proveedores/guardar', /*sesionControl.verificarToken,*/ proveedorController.guardarProveedor);

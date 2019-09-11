@@ -2,7 +2,7 @@
 
 let express = require('express');
 let distribucionController = require('../../controller/distribucion/DistribucionController');
-let sesionControl = require('../../controller/usuario/usuarioController');
+let sesionControl = require('../../controller/usuario/UsuarioController');
 
 let router = express.Router();
 
