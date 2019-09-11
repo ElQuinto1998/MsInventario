@@ -1,5 +1,5 @@
 let Distribucion = require('../../model/distribucion/Distribucion');
-let {database} = require('../../database/firebase/DatabaseConfiguration');
+let { database } = require('../../database/firebase/DatabaseConfiguration');
 
 let currentUser = {};
 
@@ -11,18 +11,18 @@ module.exports = {
         let distribucionList = {};
         currentUser = req.body.currentUser;
 
-        if (currentUser && currentUser.rol.id !== "1"){
+        if (currentUser && currentUser.rol.id !== "1") {
             res.status(401).send("No esta autorizado, debe ser un administrador");
             return;
         }
 
         await database.ref("puntosDistribucion").on('value', (data) => {
-            distribucionList = data.val();
-            if(distribucionList === null){
+            distribucionList = data;
+            if (distribucionList === null) {
                 res.status(500).send("No hay puntos de distribucion registrados");
-            }else {
+            } else {
                 console.log(distribucionList);
-                return distribucionList;
+                res.send(distribucionList);
             }
 
         });
@@ -35,7 +35,7 @@ module.exports = {
         currentUser = req.body.currentUser;
         let respuesta = null;
 
-        if (currentUser && currentUser.rol.id !== "1"){
+        if (currentUser && currentUser.rol.id !== "1") {
             res.status(401).send("No esta autorizado, debe ser administrador");
             return;
         }
@@ -43,17 +43,17 @@ module.exports = {
         await database.ref('puntosDistribucion').
             orderByChild('codigo').equalTo(codigo).once('value', (data) => {
 
-            let puntoDistribucion = data.val();
-            if(puntoDistribucion === null){
-                respuesta = "No se encontró el medicamento";
-            }else {
-                respuesta = puntoDistribucion;
-            }
-            res.send(respuesta);
+                let puntoDistribucion = data.val();
+                if (puntoDistribucion === null) {
+                    respuesta = "No se encontró el medicamento";
+                } else {
+                    respuesta = puntoDistribucion;
+                }
+                res.send(respuesta);
 
-        }).catch(error => {
-            res.status(500).send("Error, Por favor intente mas tarde");
-        });
+            }).catch(error => {
+                res.status(500).send("Error, Por favor intente mas tarde");
+            });
 
     },
 
@@ -61,7 +61,7 @@ module.exports = {
 
         currentUser = req.body.currentUser;
 
-        if (currentUser && currentUser.rol.id !== "1"){
+        if (currentUser && currentUser.rol.id !== "1") {
             res.status(401).send("No esta autorizado, debe ser administrador");
             return;
         }
@@ -90,13 +90,14 @@ module.exports = {
         let medicToUpdate = req.body;
         currentUser = req.body.currentUser;
 
-        if (currentUser && currentUser.rol.id !== "1"){
+        if (currentUser && currentUser.rol.id !== "1") {
             res.status(401).send("No esta autorizado, debe ser administrador");
             return;
         }
         //console.log(medicToUpdate);
         await database.ref().child('/medicamentos/' + medicToUpdate.codigo)
-            .update({ nombre: medicToUpdate.nombre,
+            .update({
+                nombre: medicToUpdate.nombre,
                 precioCompra: medicToUpdate.precioCompra,
                 precioVenta: medicToUpdate.precioVenta,
                 existencias: medicToUpdate.existencias,
@@ -114,11 +115,11 @@ module.exports = {
 
         currentUser = req.body.currentUser;
         let codigo = req.params.codigo;
-        if (currentUser && currentUser.rol.id !== "1"){
+        if (currentUser && currentUser.rol.id !== "1") {
             res.status(401).send("No esta autorizado, debe ser administrador");
             return;
         }
-        await database.ref("medicamentos/"+codigo).remove(a => {
+        await database.ref("medicamentos/" + codigo).remove(a => {
             res.status(200).send("Medicamento eliminado exitosamente")
         }).catch(error => {
             res.status(500).send("No se pudo eliminar el medicamento");
