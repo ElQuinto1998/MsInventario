@@ -423,60 +423,60 @@ body {
                     <li><span id="toggle-passes" class="toggle-passes">show failures only</span></li>
                 </ul>
                 <ul class="mocha-stats">
-                    <li class="passes">passes: <em>6</em></li>
+                    <li class="passes">passes: <em>8</em></li>
                     <li class="pending">pending: <em>0</em></li>
                     <li class="failures">failures: <em>0</em></li>
-                    <li class="duration">duration: <em>149ms</em></li>
+                    <li class="duration">duration: <em>2.1s</em></li>
                 </ul>
             </div>
-            <ul id="report"><li class="suite"><h1>GET Medicaments</h1><ul><li class="test pass fast"><h2>it should undefined<span class="duration">7ms</span></h2><pre><code>async () =&#x3E; {
-        await controllerM.getMedicamentos(req, res)
-            .then((re) =&#x3E; {
-                console.log(re)
-            });
-    }</code></pre></li></ul></li><li class="suite"><h1>Api Inventario - Medicamentos</h1><ul><li class="test pass fast"><h2>it should GET status 401 Unauthorized<span class="duration">28ms</span></h2><pre><code>chai.request(server)
-    .get(&#x27;/api_inventario/medicamentos&#x27;)
-    .end((err, res) =&#x3E; {
-        res.should.have.status(401);
-        res.text.should.be.eq(&#x22;No esta autorizado&#x22;);
-        done();
-    });</code></pre></li><li class="test pass fast"><h2>it should GET status 401 Unauthorized<span class="duration">4ms</span></h2><pre><code>chai.request(server)
-    .get(&#x27;/api_inventario/medicamentos/&#x27; + codigo)
-    .end((err, res) =&#x3E; {
-        res.should.have.status(401);
-        res.text.should.be.eq(&#x22;No esta autorizado&#x22;);
-        done();
-    });</code></pre></li><li class="test pass fast"><h2>it should GET status 401 Unauthorized<span class="duration">17ms</span></h2><pre><code>chai.request(server)
-    .post(&#x27;/api_inventario/medicamentos/guardar&#x27;)
-    .send(medicamento)
-    .end((err, res) =&#x3E; {
-        res.should.have.status(401);
-        res.text.should.be.eq(&#x22;No esta autorizado&#x22;);
-        done();
-    });</code></pre></li><li class="test pass fast"><h2>it should GET status 401 Unauthorized<span class="duration">3ms</span></h2><pre><code>chai.request(server)
-    .post(&#x27;/api_inventario/medicamentos/actualizar&#x27;)
-    .send(medicamentoUpdate)
-    .end((err, res) =&#x3E; {
-        res.should.have.status(401);
-        res.text.should.be.eq(&#x22;No esta autorizado&#x22;);
-        done();
-    });</code></pre></li><li class="test pass fast"><h2>it should GET status 401 Unauthorized<span class="duration">3ms</span></h2><pre><code>chai.request(server)
-    .post(&#x27;/api_inventario/medicamentos/eliminar/&#x27;+codigoEliminar)
-    .end((err, res) =&#x3E; {
-        res.should.have.status(401);
-        res.text.should.be.eq(&#x22;No esta autorizado&#x22;);
-        done();
-    });
-
-    it(&#x27;it should DELETE a medicament by code&#x27;, (done) =&#x3E; {
-chai.request(server)
-    .post(&#x27;/api_inventario/medicamentos/eliminar/&#x27;+codigoEliminar)
+            <ul id="report"><li class="suite"><h1>Api Inventario - Agregados</h1><ul><li class="test pass slow"><h2>it should GET all categorias<span class="duration">1421ms</span></h2><pre><code>chai.request(server)
+    .get(&#x27;/api_inventario/agregados/categorias&#x27;)
     .set({ Authorization: token })
     .end((err, res) =&#x3E; {
-        res.should.have.status(200);
-        res.text.should.be.eq(&#x22;Medicamento eliminado exitosamente&#x22;);
+        res.body.should.be.a(&#x22;array&#x22;);
         done();
-    });
+    });</code></pre></li></ul></li><li class="suite"><h1>Api Inventario - Puntos de distribuci&#xF3;n</h1><ul><li class="test pass slow"><h2>it should GET all pointDistribution<span class="duration">229ms</span></h2><pre><code>chai.request(server)
+    .get(&#x27;/api_inventario/distribucion&#x27;)
+    .set({ Authorization: token })
+    .end((err, res) =&#x3E; {
+        res.body.should.be.a(&#x22;array&#x22;);
+        done();
+    });</code></pre></li><li class="test pass fast"><h2>it should GET pointDistribution by code<span class="duration">27ms</span></h2><pre><code>chai.request(server)
+    .get(&#x27;/api_inventario/distribucion/&#x27;+codigo)
+    .set({ Authorization: token })
+    .end((err, res) =&#x3E; {
+        res.body.should.be.a(&#x22;object&#x22;);
+        done();
+    });</code></pre></li><li class="test pass fast"><h2>it should GET pointDistribution not found<span class="duration">9ms</span></h2><pre><code>chai.request(server)
+    .get(&#x27;/api_inventario/distribucion/&#x27;+codigoNoFound)
+    .set({ Authorization: token })
+    .end((err, res) =&#x3E; {
+        res.text.should.be.eq(&#x22;No se encontr&#xF3; el punto de distribucion&#x22;);
+        done();
+    });</code></pre></li></ul></li><li class="suite"><h1>Api Inventario - Medicamentos</h1><ul><li class="test pass slow"><h2>it should GET all medicaments<span class="duration">168ms</span></h2><pre><code>chai.request(server)
+    .get(&#x27;/api_inventario/medicamentos&#x27;)
+    .set({ Authorization: token })
+    .end((err, res) =&#x3E; {
+        res.body.should.be.a(&#x22;array&#x22;);
+        done();
+    });</code></pre></li><li class="test pass fast"><h2>it should GET medicament by code<span class="duration">13ms</span></h2><pre><code>chai.request(server)
+    .get(&#x27;/api_inventario/medicamentos/&#x27;+codigo)
+    .set({ Authorization: token })
+    .end((err, res) =&#x3E; {
+        res.body.should.be.a(&#x22;object&#x22;);
+        done();
+    });</code></pre></li><li class="test pass fast"><h2>it should GET medicament not found<span class="duration">11ms</span></h2><pre><code>chai.request(server)
+    .get(&#x27;/api_inventario/medicamentos/&#x27;+codigoNoFound)
+    .set({ Authorization: token })
+    .end((err, res) =&#x3E; {
+        res.text.should.be.eq(&#x22;No se encontr&#xF3; el medicamento&#x22;);
+        done();
+    });</code></pre></li></ul></li><li class="suite"><h1>Api Inventario - Proveedores</h1><ul><li class="test pass slow"><h2>it should GET all proveedores<span class="duration">176ms</span></h2><pre><code>chai.request(server)
+    .get(&#x27;/api_inventario/proveedores&#x27;)
+    .set({ Authorization: token })
+    .end((err, res) =&#x3E; {
+        res.body.should.be.a(&#x22;array&#x22;);
+        done();
     });</code></pre></li></ul></li></ul>
         </div>
         <script>

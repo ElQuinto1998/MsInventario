@@ -11,12 +11,12 @@ let token = "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjU0ODZkYTNlMWJmMjA5YzZmNzU2Mjlk
 let codigo = "234";
 let codigoNoFound = "645";
 
-describe('Api Inventario - Puntos de distribución', () => {
+describe('Api Inventario - Medicamentos', () => {
 
 
-    it('it should GET all pointDistribution', (done) => {
+    it('it should GET all medicaments', (done) => {
         chai.request(server)
-            .get('/api_inventario/distribucion')
+            .get('/api_inventario/medicamentos')
             .set({ Authorization: token })
             .end((err, res) => {
                 res.body.should.be.a("array");
@@ -25,9 +25,9 @@ describe('Api Inventario - Puntos de distribución', () => {
     });
 
 
-    it('it should GET pointDistribution by code', (done) => {
+    it('it should GET medicament by code', (done) => {
         chai.request(server)
-            .get('/api_inventario/distribucion/'+codigo)
+            .get('/api_inventario/medicamentos/'+codigo)
             .set({ Authorization: token })
             .end((err, res) => {
                 res.body.should.be.a("object");
@@ -35,14 +35,15 @@ describe('Api Inventario - Puntos de distribución', () => {
             });
     });
 
-    it('it should GET pointDistribution not found', (done) => {
+    it('it should GET medicament not found', (done) => {
         chai.request(server)
-            .get('/api_inventario/distribucion/'+codigoNoFound)
+            .get('/api_inventario/medicamentos/'+codigoNoFound)
             .set({ Authorization: token })
             .end((err, res) => {
-                res.text.should.be.eq("No se encontró el punto de distribucion");
+                res.text.should.be.eq("No se encontró el medicamento");
                 done();
             });
     });
 
 });
+
