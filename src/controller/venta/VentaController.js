@@ -20,9 +20,9 @@ module.exports = {
         await database.ref("ventas").on('value', (snapshot) => {
             ventas = snapshot.val();
             if(ventas === null){
-                res.status(500).send("No hay ventas registradas");
+                return res.status(500).send("No hay ventas registradas");
             }else {
-                res.status(200).send(ventas);
+                return res.status(200).send(ventas);
             }
 
         });

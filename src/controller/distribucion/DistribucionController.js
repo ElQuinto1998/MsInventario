@@ -19,13 +19,13 @@ module.exports = {
         await database.ref("puntosDistribucion").on('value', (data) => {
 
             if (data.val() === null) {
-                res.status(500).send("No hay puntos de distribucion registrados");
+                return res.status(500).send("No hay puntos de distribucion registrados");
             } else {
                 data.forEach((dato) => {
                     let puntoDist = dato.val();
                     distribucionList.push(puntoDist);
                 });
-                res.send(distribucionList);
+                return res.status(200).send(distribucionList);
             }
 
         });
@@ -53,10 +53,10 @@ module.exports = {
                         respuesta = data.val();
                     });
                 }
-                res.send(respuesta);
+                return res.status(200).send(respuesta);
 
             }).catch(error => {
-                res.status(500).send("Error, Por favor intente mas tarde");
+                return res.status(500).send("Error, Por favor intente mas tarde");
             });
 
     },
@@ -76,9 +76,9 @@ module.exports = {
             nombre: puntoDistribucion.nombre,
             localizacion : puntoDistribucion.localizacion
         }).then(value => {
-            res.send("Punto de distribucion guardado exitosamente");
+           return res.send("Punto de distribucion guardado exitosamente");
         }).catch(error => {
-            res.status(500).send("No se pudo crear el punto de distribucion");
+            return res.status(500).send("No se pudo crear el punto de distribucion");
         });
 
     },
@@ -98,9 +98,9 @@ module.exports = {
                 nombre: puntoDistribucion.nombre,
                 localizacion: puntoDistribucion.localizacion
             }).then(value => {
-                res.status(200).send("Punto de distribucion actualizado exitosamente");
+                return res.status(200).send("Punto de distribucion actualizado exitosamente");
             }).catch(error => {
-                res.status(500).send("No se pudo actualizar el Punto de distribucion");
+                return res.status(500).send("No se pudo actualizar el Punto de distribucion");
             });
     },
 
@@ -113,9 +113,9 @@ module.exports = {
             return;
         }
         await database.ref("puntosDistribucion/" + codigo).remove(a => {
-            res.status(200).send("punto de distribucion eliminado exitosamente");
+            return res.status(200).send("punto de distribucion eliminado exitosamente");
         }).catch(error => {
-            res.status(500).send("No se pudo eliminar el punto de distribucion");
+            return res.status(500).send("No se pudo eliminar el punto de distribucion");
         });
 
     }

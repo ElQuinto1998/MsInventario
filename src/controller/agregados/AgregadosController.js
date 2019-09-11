@@ -8,13 +8,13 @@ module.exports = {
 
         await database.ref("categorias").on('value', (data) => {
             if(data.val() === null){
-                res.status(500).send("No hay categorias registradas");
+                return res.status(500).send("No hay categorias registradas");
             }else {
                 data.forEach((dato) => {
                     let categoria = dato.val();
                     categorias.push(categoria);
                 });
-                res.send(categorias);
+               return res.send(categorias);
             }
 
         });

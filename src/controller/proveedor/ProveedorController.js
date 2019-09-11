@@ -9,13 +9,13 @@ module.exports = {
 
         await database.ref("proveedores").on('value', (data) => {
             if(data.val() === null){
-                res.status(500).send("No hay proveedores registrados");
+                return res.status(500).send("No hay proveedores registrados");
             }else{
                 data.forEach((dato) => {
                     let proveedor = dato.val();
                     proveedores.push(proveedor);
                 });
-                res.send(proveedores);
+                return res.status(200).send(proveedores);
             }
         });
     },
@@ -30,9 +30,9 @@ module.exports = {
             correo: proveedor.correo,
             direccion: proveedor.direccion
         }).then(value => {
-            res.send("Proveedor guardado exitosamente");
+            return res.status(200).send("Proveedor guardado exitosamente");
         }).catch(error => {
-            res.status(500).send("No se pudo crear el proveedor");
+            return res.status(500).send("No se pudo crear el proveedor");
         });
     },
 
@@ -47,9 +47,9 @@ module.exports = {
                 correo: proveedorToUpdate.correo,
                 direccion: proveedorToUpdate.direccion
             }).then(value => {
-                res.send("Proveedor actualizado exitosamente")
+                return res.status(200).send("Proveedor actualizado exitosamente")
             }).catch(error => {
-                res.status(500).send("No se pudo actualizar el proveedor");
+                return res.status(500).send("No se pudo actualizar el proveedor");
             });
 
     },
@@ -59,9 +59,9 @@ module.exports = {
         let idproveedor = req.params.idProveedor;
 
         await database.ref("proveedores/"+idproveedor).remove(a => {
-            res.send("Proveedor eliminado exitosamente");
+            return res.status(200).send("Proveedor eliminado exitosamente");
         }).catch(error => {
-            res.status(500).send("No se pudo eliminar el proveedor");
+            return res.status(500).send("No se pudo eliminar el proveedor");
         });
 
     }
