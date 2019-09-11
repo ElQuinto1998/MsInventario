@@ -57,61 +57,50 @@ module.exports = {
 
     },
 
-    guardarMedicamento: async (req, res) => {
+    guardarPuntosDistribucion: async (req, res) => {
 
-        currentUser = req.body.currentUser;
+        /* currentUser = req.body.currentUser;
 
         if (currentUser && currentUser.rol.id !== "1") {
             res.status(401).send("No esta autorizado, debe ser administrador");
             return;
-        }
+        } */
 
-        let medicamento = new Medicamento(req.body.codigo, req.body.nombre, req.body.precioCompra, req.body.precioVenta, req.body.existencias, req.body.unidad, req.body.imagen, req.body.proveedor, req.body.categoria);
-        await database.ref("medicamentos").child(medicamento.codigo).set({
-            codigo: medicamento.codigo,
-            nombre: medicamento.nombre,
-            precioCompra: medicamento.precioCompra,
-            precioVenta: medicamento.precioVenta,
-            existencias: medicamento.existencias,
-            unidad: medicamento.unidad,
-            imagen: medicamento.imagen,
-            proveedor: medicamento.proveedor,
-            categoria: medicamento.categoria
+        let puntoDistribucion = new Distribucion(req.body.codigo, req.body.nombre, req.body.localizacion);
+        await database.ref("puntosDistribucion").child(puntoDistribucion.codigo).set({
+            codigo: puntoDistribucion.codigo,
+            nombre: puntoDistribucion.nombre,
+            localizacion : puntoDistribucion.localizacion
         }).then(value => {
-            res.send("Medicamento guardado exitosamente");
+            res.send("Punto de distribucion guardado exitosamente");
         }).catch(error => {
-            res.status(500).send("No se pudo crear el medicamento");
+            res.status(500).send("No se pudo crear el punto de distribucion");
         });
 
     },
 
-    actualizarMedicamento: async (req, res) => {
+    actualizarPuntoDistribucion: async (req, res) => {
 
-        let medicToUpdate = req.body;
-        currentUser = req.body.currentUser;
+        let puntoDistribucion = req.body;
+        /* currentUser = req.body.currentUser;
 
         if (currentUser && currentUser.rol.id !== "1") {
             res.status(401).send("No esta autorizado, debe ser administrador");
             return;
-        }
+        } */
         //console.log(medicToUpdate);
-        await database.ref().child('/medicamentos/' + medicToUpdate.codigo)
+        await database.ref().child('/distribucion/' + puntoDistribucion.codigo)
             .update({
-                nombre: medicToUpdate.nombre,
-                precioCompra: medicToUpdate.precioCompra,
-                precioVenta: medicToUpdate.precioVenta,
-                existencias: medicToUpdate.existencias,
-                unidad: medicToUpdate.unidad,
-                imagen: medicToUpdate.imagen,
-                proveedor: medicToUpdate.proveedor
+                nombre: puntoDistribucion.nombre,
+                localizacion: puntoDistribucion.precioCompra
             }).then(value => {
-                res.status(200).send("Medicamento actualizado exitosamente")
+                res.status(200).send("Punto de distribucion actualizado exitosamente")
             }).catch(error => {
-                res.status(500).send("No se pudo actualizar el medicamento");
+                res.status(500).send("No se pudo actualizar el Punto de distribucion");
             });
     },
 
-    eliminarMedicamento: async (req, res) => {
+    eliminarPuntoDistribucion: async (req, res) => {
 
         currentUser = req.body.currentUser;
         let codigo = req.params.codigo;
@@ -119,7 +108,7 @@ module.exports = {
             res.status(401).send("No esta autorizado, debe ser administrador");
             return;
         }
-        await database.ref("medicamentos/" + codigo).remove(a => {
+        await database.ref("distribucion/" + codigo).remove(a => {
             res.status(200).send("Medicamento eliminado exitosamente")
         }).catch(error => {
             res.status(500).send("No se pudo eliminar el medicamento");
