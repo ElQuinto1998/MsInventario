@@ -11,6 +11,8 @@ let routerProveedor = require('./src/routes/proveedor/ProveedorRoutes');
 let routerAgregados = require('./src/routes/agregados/AgregadosRouter');
 let routerDistribucion = require('./src/routes/distribucion/DistribucionRoutes');
 
+let port = 8000 || process.env.PORT;
+
 //Body-parser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -29,8 +31,8 @@ app.use('/api_inventario', routesMedicamento, routesRegistroMedicamentos,
         routesUsuario, routerProveedor, routerAgregados, routerDistribucion);
 
 //Running server
-app.listen(8000,() => {
-    console.log("Corriendo en puerto 8000");
+app.listen(port,() => {
+    console.log("Corriendo en puerto "+port);
 });
 
 module.exports = app;
