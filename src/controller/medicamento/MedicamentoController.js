@@ -25,7 +25,6 @@ module.exports = {
                     medicamentos.push(medicamento);
                 });
                 res.send(medicamentos);
-                res.end();
             }
         });
 
@@ -52,11 +51,9 @@ module.exports = {
                 });
             }
             res.send(respuesta);
-            res.end();
 
         }).catch(error => {
             res.status(500).send("Error, Por favor intente mas tarde");
-            res.end();
         });
 
     },
@@ -86,10 +83,8 @@ module.exports = {
             puntoDistribucion: medicamento.puntoDistribucion
         }).then(value => {
             res.send("Medicamento guardado exitosamente");
-            res.end();
         }).catch(error => {
             res.status(500).send("No se pudo crear el medicamento");
-            res.end();
         });
 
     },
@@ -116,10 +111,8 @@ module.exports = {
                 puntoDistribucion: medicToUpdate.puntoDistribucion
             }).then(value => {
                 res.status(200).send("Medicamento actualizado exitosamente")
-                res.end();
             }).catch(error => {
                 res.status(500).send("No se pudo actualizar el medicamento");
-                res.end();
             });
     },
 
@@ -133,10 +126,8 @@ module.exports = {
         }
         await database.ref("medicamentos/"+codigo).remove(a => {
             res.status(200).send("Medicamento eliminado exitosamente");
-            res.end();
         }).catch(error => {
             res.status(500).send("No se pudo eliminar el medicamento");
-            res.end();
         });
 
     },
