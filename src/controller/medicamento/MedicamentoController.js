@@ -18,13 +18,14 @@ module.exports = {
         await database.ref("medicamentos").on('value', (data) => {
 
             if(data.val() === null){
-                return res.status(500).send("No hay medicamentos registrados");
+                res.status(500).send("No hay medicamentos registrados");
             }else {
                 data.forEach((dato) => {
                     let medicamento = dato.val();
                     medicamentos.push(medicamento);
                 });
-                return res.send(medicamentos);
+                res.send(medicamentos);
+                res.end();
             }
         });
 
@@ -50,10 +51,12 @@ module.exports = {
                    respuesta = data.val();
                 });
             }
-            return res.status(200).send(respuesta);
+            res.send(respuesta);
+            res.end();
 
         }).catch(error => {
-            return res.status(500).send("Error, Por favor intente mas tarde");
+            res.status(500).send("Error, Por favor intente mas tarde");
+            res.end();
         });
 
     },
@@ -82,9 +85,11 @@ module.exports = {
             categoria: medicamento.categoria,
             puntoDistribucion: medicamento.puntoDistribucion
         }).then(value => {
-            return res.status(200).send("Medicamento guardado exitosamente");
+            res.send("Medicamento guardado exitosamente");
+            res.end();
         }).catch(error => {
-            return res.status(500).send("No se pudo crear el medicamento");
+            res.status(500).send("No se pudo crear el medicamento");
+            res.end();
         });
 
     },
@@ -110,9 +115,11 @@ module.exports = {
                 categoria: medicToUpdate.categoria,
                 puntoDistribucion: medicToUpdate.puntoDistribucion
             }).then(value => {
-                return res.status(200).send("Medicamento actualizado exitosamente")
+                res.status(200).send("Medicamento actualizado exitosamente")
+                res.end();
             }).catch(error => {
-                return res.status(500).send("No se pudo actualizar el medicamento");
+                res.status(500).send("No se pudo actualizar el medicamento");
+                res.end();
             });
     },
 
@@ -125,9 +132,11 @@ module.exports = {
             return;
         }
         await database.ref("medicamentos/"+codigo).remove(a => {
-            return res.status(200).send("Medicamento eliminado exitosamente");
+            res.status(200).send("Medicamento eliminado exitosamente");
+            res.end();
         }).catch(error => {
-            return res.status(500).send("No se pudo eliminar el medicamento");
+            res.status(500).send("No se pudo eliminar el medicamento");
+            res.end();
         });
 
     },
