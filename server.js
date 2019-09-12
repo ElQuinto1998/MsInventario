@@ -1,5 +1,6 @@
 let express = require('express');
 let bodyParser = require('body-parser');
+const cors = require('cors');
 
 let app = express();
 
@@ -18,10 +19,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Configurar cabeceras y cors
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    next();
-});
+const corsOptions = {
+    origin: '*',
+    optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 
 //Using routes
 app.use('/api_inventario', routesMedicamento, routesRegistroMedicamentos, 
