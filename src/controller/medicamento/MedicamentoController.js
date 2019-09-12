@@ -45,8 +45,11 @@ module.exports = {
         let medicamento = new Medicamento(req.body.codigo, req.body.nombre, req.body.precioCompra,
             req.body.precioVenta, req.body.existencias,
             req.body.unidad, req.body.imagen, req.body.proveedor, req.body.categoria, req.body.puntoDistribucion);
-        await mRef.child(medicamento.codigo).set({
-            codigo: medicamento.codigo,
+
+        let code = parseInt((Math.random() * 10000) + 1);
+
+        await mRef.child(code).set({
+            codigo: code,
             nombre: medicamento.nombre,
             precioCompra: medicamento.precioCompra,
             precioVenta: medicamento.precioVenta,
