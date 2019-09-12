@@ -1,32 +1,22 @@
 let Medicamento = require('../../model/medicamento/Medicamento');
-let {database} = require('../../database/firebase/DatabaseConfiguration');
+let {database, dbCloud} = require('../../database/firebase/DatabaseConfiguration');
 
 let currentUser = {};
+let mRef = database.ref("medicamentos/");
 
 module.exports = {
 
     getMedicamentos: async (req, res) => {
 
-        currentUser = req.body.currentUser;
-        let medicamentos = [];
+        await mRef.on("value",
+            function(snapshot) {
+                res.json(snapshot.val());
+                mRef.off("value");
+            },
+            function (errorObject) {
+                res.send("The read failed: " + errorObject.code);
+            });
 
-        if (currentUser && currentUser.rol.id !== "1"){
-            res.status(401).send("No esta autorizado, debe ser un administrador");
-            return;
-        }
-
-        await database.ref("medicamentos").on('value', (data) => {
-
-            if(data.val() === null){
-                res.status(500).send("No hay medicamentos registrados");
-            }else {
-                data.forEach((dato) => {
-                    let medicamento = dato.val();
-                    medicamentos.push(medicamento);
-                });
-                res.send(medicamentos);
-            }
-        });
 
     },
 
@@ -34,14 +24,8 @@ module.exports = {
 
         let codigo = req.params.codigo;
         let respuesta = null;
-        currentUser = req.body.currentUser;
 
-        if (currentUser && currentUser.rol.id !== "1"){
-            res.status(401).send("No esta autorizado, debe ser administrador");
-            return;
-        }
-
-        await database.ref('medicamentos').orderByChild('codigo').equalTo(codigo).once('value', (data) => {
+        await mRef.orderByChild('codigo').equalTo(codigo).once('value', (data) => {
 
             if(data.val() === null){
                 respuesta = "No se encontró el medicamento";
@@ -52,54 +36,38 @@ module.exports = {
             }
             res.send(respuesta);
 
-        }).catch(error => {
-            res.status(500).send("Error, Por favor intente mas tarde");
         });
 
     },
 
     guardarMedicamento: async (req, res) => {
 
-        currentUser = req.body.currentUser;
-
-        if (currentUser && currentUser.rol.id !== "1"){
-            res.status(401).send("No esta autorizado, debe ser administrador");
-            return;
-        }
-
         let medicamento = new Medicamento(req.body.codigo, req.body.nombre, req.body.precioCompra,
             req.body.precioVenta, req.body.existencias,
             req.body.unidad, req.body.imagen, req.body.proveedor, req.body.categoria, req.body.puntoDistribucion);
-        await database.ref("medicamentos").child(medicamento.codigo).set({
+        await mRef.child(medicamento.codigo).set({
             codigo: medicamento.codigo,
             nombre: medicamento.nombre,
             precioCompra: medicamento.precioCompra,
             precioVenta: medicamento.precioVenta,
             existencias: medicamento.existencias,
             unidad: medicamento.unidad,
-            imagen: medicamento.imagen,
+            imagen: "http://buscarempleo.republica.com/files/2017/02/pastilla-680x513.jpg",
             proveedor: medicamento.proveedor,
             categoria: medicamento.categoria,
             puntoDistribucion: medicamento.puntoDistribucion
-        }).then(value => {
+        }).then(() => {
             res.send("Medicamento guardado exitosamente");
-        }).catch(error => {
-            res.status(500).send("No se pudo crear el medicamento");
+        }).catch((err) => {
+            res.send("No se pudo guardar el medicamento");
         });
-
     },
 
     actualizarMedicamento: async (req, res) => {
 
         let medicToUpdate = req.body;
-        currentUser = req.body.currentUser;
 
-        if (currentUser && currentUser.rol.id !== "1"){
-            res.status(401).send("No esta autorizado, debe ser administrador");
-            return;
-        }
-        //console.log(medicToUpdate);
-        await database.ref().child('/medicamentos/' + medicToUpdate.codigo)
+        await mRef.child('/medicamentos/' + medicToUpdate.codigo)
             .update({ nombre: medicToUpdate.nombre,
                 precioCompra: medicToUpdate.precioCompra,
                 precioVenta: medicToUpdate.precioVenta,
@@ -118,16 +86,10 @@ module.exports = {
 
     eliminarMedicamento: async (req, res) => {
 
-        currentUser = req.body.currentUser;
         let codigo = req.params.codigo;
-        if (currentUser && currentUser.rol.id !== "1"){
-            res.status(401).send("No esta autorizado, debe ser administrador");
-            return;
-        }
-        await database.ref("medicamentos/"+codigo).remove(a => {
-            res.status(200).send("Medicamento eliminado exitosamente");
-        }).catch(error => {
-            res.status(500).send("No se pudo eliminar el medicamento");
+
+        await database.ref("medicamentos/"+codigo).remove(() => {
+            res.send("Medicamento eliminado exitosamente");
         });
 
     },
