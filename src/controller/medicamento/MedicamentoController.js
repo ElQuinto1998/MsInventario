@@ -41,7 +41,7 @@ controller.getMedicamentos = (req, res) => {
         if(!medicamentos){
             res.send({message: 'No medications'});
         }else {
-            res.send({data: medicamentos});
+            res.json(medicamentos);
         }
     });
 
