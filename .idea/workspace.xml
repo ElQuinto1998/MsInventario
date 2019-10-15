@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6d8a09c1-c999-4e20-8885-537688b1e710" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/categoria/CategoriaController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/categoria/CategoriaController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/centros/PuntoController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/centros/PuntoController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/medicamento/MedicamentoController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/medicamento/MedicamentoController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/proveedor/ProveedorController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/proveedor/ProveedorController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/user/UserController.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middlewares/auth.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/medicamento/MedicamentoRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/medicamento/MedicamentoRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/proveedor/ProveedorRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/proveedor/ProveedorRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/user/UserRoutes.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/index.js" beforeDir="false" />
-    </list>
+    <list default="true" id="6d8a09c1-c999-4e20-8885-537688b1e710" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -148,17 +135,17 @@
       <workItem from="1570492431032" duration="88000" />
       <workItem from="1570664686925" duration="4473000" />
       <workItem from="1571096867363" duration="431000" />
-      <workItem from="1571098044382" duration="5676000" />
+      <workItem from="1571098044382" duration="5948000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58932000" />
+    <option name="totallyTimeSpent" value="59204000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -172,7 +159,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.35176653" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.35176653" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
