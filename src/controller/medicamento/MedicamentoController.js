@@ -52,7 +52,7 @@ controller.getMedicamentoByCode = (req, res) => {
         if(!medicamento){
             res.send({message: 'Medicamento not found'});
         }else {
-            res.send({data: medicamento});
+            res.json(medicamento);
         }
     });
 };

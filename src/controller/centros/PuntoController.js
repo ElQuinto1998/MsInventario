@@ -9,7 +9,7 @@ controller.getPuntosDistribucion = (req, res) => {
             if(!centros){
                 res.send({message: 'Not puntos de distribución'})
             }else {
-                res.send({data: centros});
+                res.json(centros);
             }
         }).catch(err => {
         console.log(err);

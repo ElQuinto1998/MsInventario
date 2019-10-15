@@ -9,7 +9,7 @@ controller.getProveedores = (req, res) => {
             if(!proveedores){
                 res.send({message: 'Not proveedores'})
             }else {
-                res.send({data: proveedores});
+                res.json(proveedores);
             }
         }).catch(err => {
         console.log(err);
@@ -22,7 +22,7 @@ controller.getProveedorById = (req, res) => {
         if(!proveedor){
             res.send({message: 'Proveedor not found'});
         }else {
-            res.send({data: proveedor});
+            res.json(proveedor);
         }
     });
 };

@@ -1,12 +1,11 @@
 const morgan = require('morgan');
 const express = require('express');
-const userRoutes  = require('../routes/user/UserRoutes');
+const bodyParser = require('body-parser');
 const medicRoutes = require('../routes/medicamento/MedicamentoRoutes');
 const categoRoutes = require('../routes/categoria/categoriaRoutes');
 const proveeRoutes = require('../routes/proveedor/ProveedorRoutes');
 const centrosRoutes = require('../routes/centros/CentroRoutes');
 const reporteRoutes = require('../routes/reporte/ReporteRoutes');
-const bodyParser = require('body-parser');
 
 module.exports = app => {
 
@@ -29,7 +28,7 @@ module.exports = app => {
 
     app.use(express.json());
 
-    app.use('/api_inventario', userRoutes, medicRoutes,
+    app.use('/api_inventario', medicRoutes,
         categoRoutes, proveeRoutes, centrosRoutes, reporteRoutes);
 
     return app;

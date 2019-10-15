@@ -9,7 +9,7 @@ controller.getCategorias = (req, res) => {
             if(!categorias){
                 res.send({message: 'Not categories'})
             }else {
-                res.send({data: categorias});
+                res.json(categorias );
             }
         }).catch(err => {
             console.log(err);

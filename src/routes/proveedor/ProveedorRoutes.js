@@ -3,8 +3,6 @@ const router = express.Router();
 
 const controller = require('../../controller/proveedor/ProveedorController');
 
-const auth = require('../../middlewares/auth');
-
 router.get('/proveedores', controller.getProveedores);
 router.get('/proveedores/:idProveedor', controller.getProveedorById);
 router.post('/proveedores', controller.saveProveedor);
