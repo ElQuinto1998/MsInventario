@@ -1,12 +1,12 @@
 {
-  "name": "vuejs-mongodb-login--reg",
+  "name": "msinventario",
   "version": "1.0.0",
-  "description": "",
+  "description": "1 - Run npm install to download dependencies",
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js"
   },
-  "author": "",
+  "author": "Andres Quinto",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "3.0.0",
@@ -21,5 +21,6 @@
   },
   "engines": {
     "node": "10.x"
-  }
+  },
+  "devDependencies": {}
 }
