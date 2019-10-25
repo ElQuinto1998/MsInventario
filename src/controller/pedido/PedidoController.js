@@ -67,6 +67,7 @@ controller.updatePedido = (req, res) => {
 
     let pedidoUpdate = {
         state: req.body.state,
+        dateAprobacion: new Date(),
         items: req.body.items,
         total: req.body.total
     };
@@ -80,6 +81,7 @@ controller.updatePedido = (req, res) => {
                     {
                         $set: {
                             state: pedidoUpdate.state,
+                            dateAprobacion: pedidoUpdate.dateAprobacion,
                             items: pedidoUpdate.items,
                             total: pedidoUpdate.total
                         }
