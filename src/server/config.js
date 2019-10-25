@@ -6,6 +6,7 @@ const categoRoutes = require('../routes/categoria/categoriaRoutes');
 const proveeRoutes = require('../routes/proveedor/ProveedorRoutes');
 const centrosRoutes = require('../routes/centros/CentroRoutes');
 const reporteRoutes = require('../routes/reporte/ReporteRoutes');
+const pedidoRoutes = require('../routes/pedido/PedidoRoutes');
 
 module.exports = app => {
 
@@ -29,7 +30,7 @@ module.exports = app => {
     app.use(express.json());
 
     app.use('/api_inventario', medicRoutes,
-        categoRoutes, proveeRoutes, centrosRoutes, reporteRoutes);
+        categoRoutes, proveeRoutes, centrosRoutes, reporteRoutes, pedidoRoutes);
 
     return app;
 
