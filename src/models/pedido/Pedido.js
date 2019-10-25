@@ -6,7 +6,7 @@ const PedidoSchema = new Schema({
     userEmail: {type: String, required: true},
     state: {type: String, required: true},
     items: {type: Array, required: true},
-    dateSolicitud: {type: Date, default: Date.now, required: true},
+    dateSolicitud: {type: Date},
     dateAprobacion: {type: Date},
     total: {type: Number, required: true}
 });

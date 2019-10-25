@@ -26,7 +26,8 @@ controller.savePedido = (req, res) => {
         userEmail: req.body.userEmail,
         state: stateInit,
         items: req.body.items,
-        total: req.body.total
+        total: req.body.total,
+        dateSolicitud: new Date()
     };
 
     let existe = false;
