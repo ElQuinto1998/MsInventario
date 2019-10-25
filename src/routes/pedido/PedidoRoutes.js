@@ -6,6 +6,6 @@ const controller = require('../../controller/pedido/PedidoController');
 router.get('/pedidos', controller.getPedidos);
 router.get('/pedidos/:userEmail', controller.getPedidosByUser);
 router.post('/pedidos', controller.savePedido);
-router.post('/pedidos/:numberPedido', controller.updatePedido);
+router.put('/pedidos/:numberPedido', controller.updatePedido);
 
 module.exports = router;
